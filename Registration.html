@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url("/Banking Website/Images/registrationPageBGImg.jpg");
+            background-image: url("/Images/registrationPageBGImg.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -124,27 +124,37 @@
             <label for="address">Address:</label>
             <textarea id="address" name="address" required></textarea>
 
-            <button onclick="redirectFunc()" type="submit">Register</button>
-            
+            <button type="submit">Register</button>
         </form>
         <div class="login-link">
-            <p>Already have an account? <a href="\Banking Website\signinPage.html">Sign In</a></p>
+            <p>Already have an account? <a href="signup.html">Sign up</a></p>
         </div>
     </div>
+
     <script>
-        function redirectFunc(event) {
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
             event.preventDefault();
+
             let password = document.getElementById("password").value;
             let confirmPassword = document.getElementById("confirmPassword").value;
-    
-            // Simple validation: Check if passwords match
+            let dob = document.getElementById("dob").value;
+            let today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
+            // Validate if passwords match
             if (password !== confirmPassword) {
                 alert("Passwords do not match!");
                 return;
             }
-            window.location.href = "successPage.html"; // Replace 
-        }
-        document.getElementById("registrationForm").addEventListener("submit", redirectFunc);
+
+            // Validate Date of Birth (should not be in the future)
+            if (dob > today) {
+                alert("Date of Birth cannot be in the future!");
+                return;
+            }
+
+            // If all validations pass, redirect to success page
+            window.location.href = "successPage.html";
+        });
     </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #e0eafc;
-            background-image: url("/Banking Website/Images/signinPageBGImg.jpg");
+            background-image: url("/Images/signinPageBGImg.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -126,39 +126,39 @@
             document.getElementById(type).classList.add('active');
             document.querySelector(`.tab[onclick="showForm('${type}')"]`).classList.add('active');
         }
-    
+
         function handleLogin(event, userType) {
             event.preventDefault(); // Prevent form from actually submitting
-    
+
             if (userType === 'staff') {
                 let staffId = document.getElementById("staffId").value;
                 let staffPassword = document.getElementById("staffPassword").value;
-    
+
                 if (staffId.trim() === "" || staffPassword.trim() === "") {
                     alert("Please fill in all fields.");
                     return;
                 }
-    
+
                 // Redirect to staff dashboard or page
-                window.location.href = "staffDashboard.html"; // Change URL as needed
+                window.location.href = "home page.html"; // Change URL as needed
             } else if (userType === 'customer') {
                 let customerEmail = document.getElementById("customerEmail").value;
                 let customerPassword = document.getElementById("customerPassword").value;
-    
+
                 if (customerEmail.trim() === "" || customerPassword.trim() === "") {
                     alert("Please fill in all fields.");
                     return;
                 }
-    
+
                 // Redirect to customer dashboard or page
-                window.location.href = "customerDashboard.html"; // Change URL as needed
+                window.location.href = "home page.html"; // Change URL as needed
             }
         }
-    
+
         // Attach event listeners to forms
         document.getElementById("staffLoginForm").addEventListener("submit", (event) => handleLogin(event, "staff"));
         document.getElementById("customerLoginForm").addEventListener("submit", (event) => handleLogin(event, "customer"));
     </script>
-    
+
 </body>
 </html>
